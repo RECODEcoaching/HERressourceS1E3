@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="HER DECODE · Ce que chaque contraception peut changer quand tu t'entraînes pour progresser.">
+<title>Contraception décodée</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#f7f6fb; --surface:#ffffff; --ink:#15121f; --muted:#5d5873; --line:#e4e0ef;
+  --accent:#6D28D9; --accent-soft:#f1ebfd; --accent-ink:#5b21b6;
+  --warn:#9a5b00; --warn-soft:#fdf3e2; --info:#1d4ed8; --info-soft:#e8effd;
+  --hero-a:#1b1430; --hero-b:#111827; --hero-ink:#f4f1fb; --hero-muted:#bdb5d6;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0f0d16; --surface:#171422; --ink:#ece9f5; --muted:#a8a2bd; --line:#2b2640;
+    --accent:#a78bfa; --accent-soft:#231b3a; --accent-ink:#c4b5fd;
+    --warn:#f5b454; --warn-soft:#2a1f0d; --info:#8fb0ff; --info-soft:#141d33;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0f0d16; --surface:#171422; --ink:#ece9f5; --muted:#a8a2bd; --line:#2b2640;
+  --accent:#a78bfa; --accent-soft:#231b3a; --accent-ink:#c4b5fd;
+  --warn:#f5b454; --warn-soft:#2a1f0d; --info:#8fb0ff; --info-soft:#141d33;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.6;margin:0}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:0 48px}
+h1,h2,h3{text-wrap:balance;line-height:1.2;margin:0}
+p{margin:0}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+.hero{background:linear-gradient(160deg,var(--hero-a),var(--hero-b));color:var(--hero-ink);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:420px;height:420px;right:-120px;top:-160px;background:radial-gradient(circle,rgba(124,58,237,.45),transparent 65%);pointer-events:none}
+.hero .wrap{padding-block:48px 40px;position:relative}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.hero .eyebrow{color:#c4b5fd}
+.hero h1{font-size:clamp(30px,6vw,44px);font-weight:800;margin-top:12px;letter-spacing:-.01em}
+.hero .lede{color:var(--hero-muted);margin-top:14px;max-width:58ch;font-size:17px}
+
+section{margin-top:40px;display:flex;flex-direction:column;gap:16px}
+.sec-eyebrow{color:var(--accent-ink)}
+h2.s{font-size:24px;font-weight:700}
+.prose{max-width:65ch}
+.muted{color:var(--muted)}
+
+.callout{border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;background:var(--surface)}
+.callout .ct{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.c-warn{background:var(--warn-soft);border-color:transparent}.c-warn .ct{color:var(--warn)}
+.c-accent{background:var(--accent-soft);border-color:transparent}.c-accent .ct{color:var(--accent-ink)}
+.c-info{background:var(--info-soft);border-color:transparent}.c-info .ct{color:var(--info)}
+
+ul.clean{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+ul.clean li{padding-left:22px;position:relative}
+ul.clean li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+.fam{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.fam div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.fam h3{font-size:16px;font-weight:700}
+.fam p{font-size:14px;color:var(--muted)}
+
+.gen{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.gen div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.gen strong{color:var(--accent-ink);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.gen span{color:var(--muted)}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:4px}
+.stat b{font-size:28px;font-weight:800;color:var(--accent-ink);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat span{font-size:14px;color:var(--muted)}
+
+details.m{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+details.m>summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;gap:14px;align-items:flex-start;background:linear-gradient(90deg,var(--accent-soft),transparent)}
+details.m>summary::-webkit-details-marker{display:none}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.sum-t{display:flex;flex-direction:column;gap:2px;flex:1}
+.sum-t strong{font-size:17px}
+.sum-t span{font-size:14px;color:var(--muted)}
+.chev{flex:none;margin-top:6px;width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
+details[open]>summary .chev{transform:rotate(-135deg)}
+.m-body{padding:6px 18px 18px;display:flex;flex-direction:column;gap:12px}
+.verdict{font-weight:600;color:var(--accent-ink);padding-top:10px;border-top:1px solid var(--line)}
+
+.summary{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.summary .ct{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink)}
+
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--muted)}
+footer strong{color:var(--accent-ink)}
+@media (prefers-reduced-motion:reduce){.chev{transition:none}}
+.pill{display:flex;flex-direction:column;gap:4px;padding-top:10px;border-top:1px solid var(--line)}
+.pill strong{font-size:14px;color:var(--accent-ink)}
+.pill span{font-size:15px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">HER DECODE · Épisode 3 · Ressource</div>
+    <h1>Ta contraception, décodée</h1>
+    <p class="lede">Ce que chaque contraception peut changer quand tu t'entraînes pour progresser. En simple.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section>
+  <div class="callout c-warn">
+    <div class="ct">À lire en premier</div>
+    <ul class="clean">
+      <li>Cette ressource sert à comprendre, pas à décider à ta place.</li>
+      <li>Tu veux changer ou arrêter ta contraception ? Parles-en d'abord à ton médecin ou à ta gynécologue.</li>
+      <li>Endométriose, SOPK, règles très abondantes ou très douloureuses : une contraception hormonale peut être le meilleur choix pour ta santé.</li>
+    </ul>
+  </div>
+  <p class="prose">Chez les sportives de haut niveau, 7 sur 10 ont déjà utilisé une contraception hormonale, souvent pour mieux gérer leurs règles autour de l'entraînement. Ces hormones peuvent jouer sur ta composition corporelle et ta progression. Voici l'essentiel.</p>
+  <div class="callout c-accent">
+    <div class="ct">Garde du recul</div>
+    <p><strong>D'une femme à l'autre, la réponse peut être complètement différente.</strong> Et les études ont leurs limites : souvent des femmes peu sportives, sur quelques mois, sans préciser la pilule exacte. Prends ces infos comme des tendances, pas comme des certitudes.</p>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow sec-eyebrow">Les bases</div>
+  <h2 class="s">Trois grandes familles</h2>
+  <div class="fam">
+    <div><h3>Combinée</h3><p>Un œstrogène de synthèse (l'EE) + un progestatif.</p></div>
+    <div><h3>Progestatif seul</h3><p>Pas d'œstrogène dans la contraception. Tes ovaires continuent d'en produire.</p></div>
+    <div><h3>Sans hormone</h3><p>Préservatif, stérilet en cuivre. Ton cycle naturel continue.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow sec-eyebrow">L'essentiel</div>
+  <h2 class="s">Ce qu'il faut retenir</h2>
+
+  <div class="callout">
+    <div class="ct">L'œstrogène de la pilule</div>
+    <p>Ce n'est pas celui que produisent tes ovaires : c'est une molécule de laboratoire, à l'action plus marquée. Chez certaines, le corps garde un peu plus d'eau, surtout quand l'alimentation est salée.</p>
+  </div>
+
+  <div class="callout">
+    <div class="ct">Le progestatif</div>
+    <p>Il en existe quatre générations, classées selon leur structure. Chacune peut avoir des effets différents sur ton corps. Cas à part : l'injection (Depo-Provera), à forte dose, qui agit 3 mois.</p>
+  </div>
+
+  <div class="callout">
+    <div class="ct">Le poids</div>
+    <p>En moyenne, l'effet semble faible, sauf avec l'injection. Certaines femmes retiennent un peu plus d'eau, d'autres prennent un peu de gras, d'autres ne voient aucune différence. <strong>La variabilité entre les femmes est énorme.</strong></p>
+  </div>
+
+  <div class="callout">
+    <div class="ct">La testostérone</div>
+    <p>Sous pilule combinée, ta testostérone libre peut nettement baisser. Il y a possiblement un effet sur ton muscle, même s'il reste sans doute minime. C'est un paramètre à connaître.</p>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow sec-eyebrow">Méthode par méthode</div>
+  <h2 class="s">Ce que fait chaque contraception</h2>
+
+  <details class="m" open>
+    <summary><span class="num">1</span><span class="sum-t"><strong>Préservatif</strong><span>Sans hormone</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="m-body">
+      <ul class="clean">
+        <li>Aucune hormone : aucun effet sur ton corps ni sur ta performance.</li>
+        <li>La contrainte est pratique, pas physiologique.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="m" open>
+    <summary><span class="num">2</span><span class="sum-t"><strong>Stérilet en cuivre</strong><span>Sans hormone</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="m-body">
+      <ul class="clean">
+        <li>Aucune hormone : ton cycle naturel continue.</li>
+        <li>Les règles sont souvent plus abondantes et plus douloureuses.</li>
+        <li>À surveiller : l'équilibre zinc/cuivre, et ton fer, puisque des règles plus abondantes font perdre plus de fer.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="m" open>
+    <summary><span class="num">3</span><span class="sum-t"><strong>Stérilet hormonal</strong><span>Mirena, Kyleena…</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="m-body">
+      <ul class="clean">
+        <li>Petite dose, qui agit surtout dans l'utérus.</li>
+        <li>La plupart des femmes continuent d'ovuler.</li>
+        <li>Quelques effets sur le reste du corps restent possibles (libido, humeur), même s'ils semblent mineurs.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="m" open>
+    <summary><span class="num">4</span><span class="sum-t"><strong>Pilule combinée</strong><span>Et ses générations</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="m-body">
+      <ul class="clean">
+        <li>Elle met tes ovaires au repos : pas d'ovulation. Le saignement de la semaine d'arrêt n'est pas des règles.</li>
+        <li>Quelle que soit la pilule : testostérone libre en baisse.</li>
+      </ul>
+      <div class="pill"><strong>2e génération</strong><span>Progestatif plus androgénique (lévonorgestrel). Peau grasse ou acné possibles chez certaines.</span></div>
+      <div class="pill"><strong>3e génération</strong><span>Progestatif moins androgénique (désogestrel, gestodène…).</span></div>
+      <div class="pill"><strong>4e génération</strong><span>Progestatif anti-androgénique (drospirénone).</span></div>
+      <div class="callout c-accent">
+        <div class="ct">Laquelle pèse le moins sur ta progression ?</div>
+        <p>Potentiellement la 3e génération.</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="m" open>
+    <summary><span class="num">5</span><span class="sum-t"><strong>Implant et micropilule</strong><span>Progestatif seul · Ex : Nexplanon, Cérazette, Optimizette</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="m-body">
+      <ul class="clean">
+        <li>Ils bloquent l'ovulation chez la grande majorité des femmes. Tes ovaires continuent quand même de produire de l'œstrogène.</li>
+        <li>Saignements souvent irréguliers avec l'implant.</li>
+        <li>Peuvent avoir un petit effet négatif sur la progression.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="m" open>
+    <summary><span class="num">6</span><span class="sum-t"><strong>Injection</strong><span>Depo-Provera, une injection tous les 3 mois</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="m-body">
+      <ul class="clean">
+        <li>La seule contraception qui fait clairement prendre du poids dans les études : environ 5 kg en 3 ans, dont 4 kg de gras.</li>
+        <li>Baisse de la densité osseuse.</li>
+        <li>Une fois injectée, elle agit 3 mois : impossible d'ajuster entre-temps.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<section>
+  <div class="eyebrow sec-eyebrow">Et maintenant</div>
+  <h2 class="s">Comment utiliser tout ça</h2>
+  <p class="prose">Ta contraception, c'est d'abord une décision de santé et de qualité de vie.</p>
+  <p class="prose">Si tes objectifs sont élevés (prendre du muscle, perdre du gras), le type de contraception est <strong>un paramètre à prendre en compte</strong> dans ton évolution. Mais pas le seul : la praticité, ta tolérance, ta santé et ton confort comptent tout autant. Et côté résultats, entraînement, alimentation, sommeil et stress restent les leviers principaux.</p>
+  <div class="summary">
+    <div class="ct">En résumé</div>
+    <p>Connais ta contraception, observe comment ton corps réagit, et fais tes choix avec ton médecin.</p>
+  </div>
+</section>
+
+<footer>
+  <span><strong>RECODE</strong> · Coaching performance féminine</span>
+  <span>@indianaafit</span>
+</footer>
+
+</main>
+
+</body>
+</html>
